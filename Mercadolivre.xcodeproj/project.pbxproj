@@ -9,12 +9,21 @@
 /* Begin PBXBuildFile section */
 		E5A060D62818E1E400160FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A060D52818E1E400160FF5 /* AppDelegate.swift */; };
 		E5A060D82818E1E400160FF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A060D72818E1E400160FF5 /* SceneDelegate.swift */; };
-		E5A060DA2818E1E400160FF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A060D92818E1E400160FF5 /* ViewController.swift */; };
 		E5A060DF2818E1E500160FF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A060DE2818E1E500160FF5 /* Assets.xcassets */; };
 		E5A060E22818E1E500160FF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5A060E02818E1E500160FF5 /* LaunchScreen.storyboard */; };
 		E5A060ED2818E1E500160FF5 /* MercadolivreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A060EC2818E1E500160FF5 /* MercadolivreTests.swift */; };
 		E5A060F72818E1E500160FF5 /* MercadolivreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A060F62818E1E500160FF5 /* MercadolivreUITests.swift */; };
 		E5A060F92818E1E500160FF5 /* MercadolivreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A060F82818E1E500160FF5 /* MercadolivreUITestsLaunchTests.swift */; };
+		E5A061072819B21600160FF5 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A061062819B21600160FF5 /* AppConfiguration.swift */; };
+		E5A061092819B29900160FF5 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A061082819B29900160FF5 /* AppRouter.swift */; };
+		E5A0610C2819B2F700160FF5 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0610B2819B2F700160FF5 /* AppDIContainer.swift */; };
+		E5A0610E2819B49400160FF5 /* ProductsScenesDiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0610D2819B49400160FF5 /* ProductsScenesDiContainer.swift */; };
+		E5A061122819E18500160FF5 /* ProductsScenesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A061112819E18500160FF5 /* ProductsScenesRouter.swift */; };
+		E5A061172819E25700160FF5 /* SearchProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A061152819E25700160FF5 /* SearchProductsViewController.swift */; };
+		E5A061182819E25700160FF5 /* SearchProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A061162819E25700160FF5 /* SearchProductsViewController.xib */; };
+		E5A0611D2819E41400160FF5 /* Alert+UIVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0611B2819E41400160FF5 /* Alert+UIVIewController.swift */; };
+		E5A0611E2819E41400160FF5 /* UIViewController+loadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0611C2819E41400160FF5 /* UIViewController+loadFromNib.swift */; };
+		E5A061222819E73100160FF5 /* SearchProductsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A061212819E73100160FF5 /* SearchProductsPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +47,6 @@
 		E5A060D22818E1E400160FF5 /* Mercadolivre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mercadolivre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A060D52818E1E400160FF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5A060D72818E1E400160FF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E5A060D92818E1E400160FF5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E5A060DE2818E1E500160FF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5A060E12818E1E500160FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5A060E32818E1E500160FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +55,16 @@
 		E5A060F22818E1E500160FF5 /* MercadolivreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MercadolivreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A060F62818E1E500160FF5 /* MercadolivreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercadolivreUITests.swift; sourceTree = "<group>"; };
 		E5A060F82818E1E500160FF5 /* MercadolivreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercadolivreUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E5A061062819B21600160FF5 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		E5A061082819B29900160FF5 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		E5A0610B2819B2F700160FF5 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		E5A0610D2819B49400160FF5 /* ProductsScenesDiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsScenesDiContainer.swift; sourceTree = "<group>"; };
+		E5A061112819E18500160FF5 /* ProductsScenesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsScenesRouter.swift; sourceTree = "<group>"; };
+		E5A061152819E25700160FF5 /* SearchProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductsViewController.swift; sourceTree = "<group>"; };
+		E5A061162819E25700160FF5 /* SearchProductsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchProductsViewController.xib; sourceTree = "<group>"; };
+		E5A0611B2819E41400160FF5 /* Alert+UIVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alert+UIVIewController.swift"; sourceTree = "<group>"; };
+		E5A0611C2819E41400160FF5 /* UIViewController+loadFromNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+loadFromNib.swift"; sourceTree = "<group>"; };
+		E5A061212819E73100160FF5 /* SearchProductsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductsPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				E5A061052819B15500160FF5 /* Application */,
-				E5A060D92818E1E400160FF5 /* ViewController.swift */,
+				E5A0610F2819B66000160FF5 /* Presentation */,
+				E5A061232819ECFD00160FF5 /* Domain */,
+				E5A061242819ED2700160FF5 /* Data */,
 				E5A060DE2818E1E500160FF5 /* Assets.xcassets */,
 				E5A060E02818E1E500160FF5 /* LaunchScreen.storyboard */,
 				E5A060E32818E1E500160FF5 /* Info.plist */,
@@ -128,8 +148,127 @@
 			children = (
 				E5A060D72818E1E400160FF5 /* SceneDelegate.swift */,
 				E5A060D52818E1E400160FF5 /* AppDelegate.swift */,
+				E5A061062819B21600160FF5 /* AppConfiguration.swift */,
+				E5A061082819B29900160FF5 /* AppRouter.swift */,
+				E5A0610A2819B2D200160FF5 /* DIContainer */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		E5A0610A2819B2D200160FF5 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				E5A0610B2819B2F700160FF5 /* AppDIContainer.swift */,
+				E5A0610D2819B49400160FF5 /* ProductsScenesDiContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		E5A0610F2819B66000160FF5 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E5A061192819E3E100160FF5 /* Utils */,
+				E5A061102819E15D00160FF5 /* Router */,
+				E5A061132819E21800160FF5 /* ProductsScenes */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E5A061102819E15D00160FF5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E5A061112819E18500160FF5 /* ProductsScenesRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E5A061132819E21800160FF5 /* ProductsScenes */ = {
+			isa = PBXGroup;
+			children = (
+				E5A061142819E21E00160FF5 /* SearchProducts */,
+			);
+			path = ProductsScenes;
+			sourceTree = "<group>";
+		};
+		E5A061142819E21E00160FF5 /* SearchProducts */ = {
+			isa = PBXGroup;
+			children = (
+				E5A061202819E72000160FF5 /* Presenter */,
+				E5A0611F2819E71300160FF5 /* ViewController */,
+			);
+			path = SearchProducts;
+			sourceTree = "<group>";
+		};
+		E5A061192819E3E100160FF5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E5A0611A2819E3FD00160FF5 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E5A0611A2819E3FD00160FF5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E5A0611B2819E41400160FF5 /* Alert+UIVIewController.swift */,
+				E5A0611C2819E41400160FF5 /* UIViewController+loadFromNib.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E5A0611F2819E71300160FF5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E5A061152819E25700160FF5 /* SearchProductsViewController.swift */,
+				E5A061162819E25700160FF5 /* SearchProductsViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E5A061202819E72000160FF5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E5A061212819E73100160FF5 /* SearchProductsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E5A061232819ECFD00160FF5 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E5A061252819EE6400160FF5 /* Entities */,
+				E5A061262819EE7100160FF5 /* UseCases */,
+				E5A061272819EE8500160FF5 /* Interfaces */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E5A061242819ED2700160FF5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		E5A061252819EE6400160FF5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E5A061262819EE7100160FF5 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		E5A061272819EE8500160FF5 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interfaces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5A061182819E25700160FF5 /* SearchProductsViewController.xib in Resources */,
 				E5A060E22818E1E500160FF5 /* LaunchScreen.storyboard in Resources */,
 				E5A060DF2818E1E500160FF5 /* Assets.xcassets in Resources */,
 			);
@@ -262,8 +402,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5A060DA2818E1E400160FF5 /* ViewController.swift in Sources */,
+				E5A0611D2819E41400160FF5 /* Alert+UIVIewController.swift in Sources */,
 				E5A060D62818E1E400160FF5 /* AppDelegate.swift in Sources */,
+				E5A061222819E73100160FF5 /* SearchProductsPresenter.swift in Sources */,
+				E5A0610C2819B2F700160FF5 /* AppDIContainer.swift in Sources */,
+				E5A061072819B21600160FF5 /* AppConfiguration.swift in Sources */,
+				E5A061122819E18500160FF5 /* ProductsScenesRouter.swift in Sources */,
+				E5A061092819B29900160FF5 /* AppRouter.swift in Sources */,
+				E5A0611E2819E41400160FF5 /* UIViewController+loadFromNib.swift in Sources */,
+				E5A0610E2819B49400160FF5 /* ProductsScenesDiContainer.swift in Sources */,
+				E5A061172819E25700160FF5 /* SearchProductsViewController.swift in Sources */,
 				E5A060D82818E1E400160FF5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +579,7 @@
 		E5A060FD2818E1E500160FF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_BASE_URL = "https://developers.mercadolibre.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +607,7 @@
 		E5A060FE2818E1E500160FF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_BASE_URL = "https://developers.mercadolibre.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
