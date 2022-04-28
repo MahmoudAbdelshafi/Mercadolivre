@@ -9,10 +9,22 @@ import UIKit
 
 final class ProductsScenesDiContainer {
     
+    // MARK: - Repositories
+    
+    func makeDefaultProductsRepository() -> ProductsRepository {
+        DefaultProductsRepository(baseAPI: BaseAPI())
+    }
+    
+    // MARK: - Use Cases
+    
+    func makeDefaultFetchProductsUseCase() -> FetchProductsUseCase {
+        DefaultFetchProductsUseCase(productsRepository: makeDefaultProductsRepository())
+    }
+    
     //MARK: - Presenters
     
-    func makeSearchProductsPresenter() -> SearchProductsPresenter {
-        DefaultSearchProductsPresenter()
+    func makeSearchProductsPresenter() -> DefaultSearchProductsPresenter {
+        DefaultSearchProductsPresenter(fetchProductsUseCase: makeDefaultFetchProductsUseCase())
     }
 }
 
@@ -21,10 +33,14 @@ final class ProductsScenesDiContainer {
 extension ProductsScenesDiContainer: ProductsScenesRouterDependencies {
     
     func makeSearchProductsViewController() -> SearchProductsViewController {
-        SearchProductsViewController.create(with: makeSearchProductsPresenter())
+        let presenter = makeSearchProductsPresenter()
+        let viewController = SearchProductsViewController.create(with: presenter)
+        presenter.setViewController(viewController: viewController)
+        
+        return viewController
     }
     
     func makeProductsScenesRouter(navigationController: UINavigationController) -> ProductsScenesRouter {
-        return ProductsScenesRouter(navigationController: navigationController, dependencies: self)
+        ProductsScenesRouter(navigationController: navigationController, dependencies: self)
     }
 }

@@ -8,12 +8,29 @@
 import Foundation
 
 protocol SearchProductsPresenter {
-    
+    func getProducts(with text: String)
 }
 
 final class DefaultSearchProductsPresenter: SearchProductsPresenter {
     
-    init() {
-     
+    //MARK: - Properties
+    
+    private let fetchProductsUseCase: FetchProductsUseCase
+    private weak var viewController: SearchProductsViewPresentationProtocol?
+    
+    init(fetchProductsUseCase: FetchProductsUseCase) {
+        self.fetchProductsUseCase = fetchProductsUseCase
+    }
+    
+    func getProducts(with text: String) {
+        fetchProductsUseCase.execute(text: text) { result in
+            print(result)
+        }
+    }
+    
+    // MARK: - Setter
+    
+    func setViewController(viewController: SearchProductsViewPresentationProtocol) {
+        self.viewController = viewController
     }
 }
