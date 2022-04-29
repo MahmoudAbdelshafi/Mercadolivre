@@ -28,16 +28,11 @@ class BaseAPI<T: TargetType> {
             print("response ",response)
             #endif
             guard let statusCode = response.response?.statusCode else {
-                completion(.failure(.general))
+                completion(.failure(.backEndErrorResponse(message: response.error?.localizedDescription ?? "")))
                 return
             }
             if statusCode == 200 {
-                // Successful request
-                guard let jsonResponse = try? response.result.get() else {
-                    completion(.failure(.parsing))
-                    return
-                }
-
+    
                 guard let data = response.data else {
                     completion(.failure(.parsing))
                     return
@@ -48,25 +43,11 @@ class BaseAPI<T: TargetType> {
                     return
                 }
                 completion(.success(responseObj))
-            } else if (400..<499).contains(statusCode) {
-                guard let errorResponse = try? response.result.get() else {
+            } else if (400..<599).contains(statusCode) {
+                guard (try? response.result.get()) != nil else {
                     completion(.failure(.checkStatus(code: statusCode)))
                     return
                 }
-                
-                guard let errorJSONData = try? JSONSerialization.data(withJSONObject: errorResponse, options: []) else {
-                    completion(.failure(.parsing))
-                    return
-                }
-                
-//                guard let responseErrorObj = try? JSONDecoder().decode(BaseErrorResponse.self, from: errorJSONData) else {
-//                    completion(.failure(.parsing))
-//                    return
-//                }
-                #if DEBUG
-               // print("ErrorResponse  ",responseErrorObj)
-                #endif
-              //  completion(.failure(.backEndErrorResponse(message: "\(responseErrorObj.message ?? "") \n \( "")" )))
             }
             else {
                 completion(.failure(.checkStatus(code: statusCode)))
