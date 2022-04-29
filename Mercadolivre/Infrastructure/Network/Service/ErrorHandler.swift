@@ -36,4 +36,3 @@ enum ErrorHandler: Error {
         return "Network Error."
     }
 }
-

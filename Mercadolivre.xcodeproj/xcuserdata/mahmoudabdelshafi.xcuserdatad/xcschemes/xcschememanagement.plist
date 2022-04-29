@@ -7,7 +7,25 @@
 		<key>Mercadolivre.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>E5A060D12818E1E400160FF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5A060E72818E1E500160FF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5A060F12818E1E500160FF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -7,21 +7,27 @@
 
 import Foundation
 
-// MARK: - Products
+// MARK: - ProductsResponseDTO
 
 struct ProductsResponseDTO: Decodable  {
-    let results: [ProductResponseDTO]?
+    let results: [ProductResponse]?
 }
 
-//MARK: Product
+//MARK: ProductResponse
 
-struct ProductResponseDTO: Decodable {
+struct ProductResponse: Decodable {
     let id: String?
     let title: String?
     let price: Double?
     let permalink: String?
     let thumbnail: String?
     let thumbnailID: String?
+    let currencyID: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, title, price, permalink, thumbnail, thumbnailID
+        case currencyID = "currency_id"
+    }
 }
 
 extension ProductsResponseDTO {
@@ -31,11 +37,11 @@ extension ProductsResponseDTO {
         
         for product in self.results! {
             let domainProduct = Product(title: product.title,
-                                        price: "\(product.price ?? 0)",
+                                        price: "\(product.price ?? 0) \(product.currencyID ?? "")",
                                         thumbnail: product.thumbnail)
             products.append(domainProduct)
         }
-       return products
+        return products
     }
     
 }

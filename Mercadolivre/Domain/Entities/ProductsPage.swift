@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Product {
+struct Product: Equatable {
     let title: String?
     let price: String?
     let thumbnail: String?
