@@ -9,33 +9,31 @@ import Alamofire
 
 enum Router {
     case searchProducts(text: String)
+    case productDetails(id: String)
 }
 
 extension Router: TargetType {
    
-    
     private var searchPath: String {
         return  "sites/MLU/search"
     }
     
-    private var productPath: String {
-        return  "product/"
+    private var productDetailsPath: String {
+        return  "items/"
     }
-    
-    private var brand: String {
-        return "brand/"
-    }
-    
+ 
     var path: String {
         switch self {
         case .searchProducts:
             return searchPath
+        case .productDetails(let id):
+            return productDetailsPath + "\(id)"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .searchProducts:
+        case .searchProducts, .productDetails:
             return .get
         }
     }
@@ -44,6 +42,9 @@ extension Router: TargetType {
         switch self {
         case .searchProducts(let text):
             return .requestParameters(parameters: ["q": text], encoding: URLEncoding.queryString)
+            
+        case .productDetails:
+            return .requestPlain
         }
     }
 }
