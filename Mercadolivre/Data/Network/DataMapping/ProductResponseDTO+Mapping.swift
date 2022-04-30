@@ -10,35 +10,44 @@ import Foundation
 // MARK: - ProductsResponseDTO
 
 struct ProductsResponseDTO: Decodable  {
-    let results: [ProductResponse]?
+    let results: [ProductResponseDTO]?
 }
 
-//MARK: ProductResponse
+//MARK: - ProductResponseDTO
 
-struct ProductResponse: Decodable {
+struct ProductResponseDTO: Decodable {
     let id: String?
     let title: String?
     let price: Double?
-    let permalink: String?
     let thumbnail: String?
-    let thumbnailID: String?
     let currencyID: String?
     
     enum CodingKeys: String, CodingKey {
-        case id, title, price, permalink, thumbnail, thumbnailID
+        case id, title, price, thumbnail
         case currencyID = "currency_id"
+    }
+}
+
+extension ProductResponseDTO {
+    
+    func toProductDomain() -> Product {
+        return Product(title: self.title,
+                       price: "\(self.price ?? 0) \(self.currencyID ?? "")",
+                       thumbnail: self.thumbnail,
+                       productID: self.id)
     }
 }
 
 extension ProductsResponseDTO {
     
-    func toProductsPageDomain() -> [Product] {
+    func toProductsDomain() -> [Product] {
         var products = [Product]()
         
         for product in self.results! {
             let domainProduct = Product(title: product.title,
                                         price: "\(product.price ?? 0) \(product.currencyID ?? "")",
-                                        thumbnail: product.thumbnail)
+                                        thumbnail: product.thumbnail,
+                                        productID: product.id)
             products.append(domainProduct)
         }
         return products

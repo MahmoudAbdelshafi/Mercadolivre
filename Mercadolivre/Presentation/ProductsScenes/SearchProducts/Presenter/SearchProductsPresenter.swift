@@ -7,8 +7,13 @@
 
 import Foundation
 
+struct SearchProductsPresenterActions {
+    let showProductDetails: (ProductDetailsDataModel) -> Void
+}
+
 protocol SearchProductsPresenter {
     func getProducts(with text: String)
+    func didSelectItem(at index: Int)
     
     var products: [Product] { get }
     var errorTitle: String { get } 
@@ -20,13 +25,20 @@ final class DefaultSearchProductsPresenter: SearchProductsPresenter {
     
     private let fetchProductsUseCase: FetchProductsUseCase
     private weak var viewController: SearchProductsViewPresentationProtocol?
+    private let actions: SearchProductsPresenterActions?
     
     var products: [Product] = []
     let errorTitle = "Error"
     
-    init(fetchProductsUseCase: FetchProductsUseCase) {
+    //MARK: - Init
+    
+    init(fetchProductsUseCase: FetchProductsUseCase,
+         actions: SearchProductsPresenterActions? = nil) {
         self.fetchProductsUseCase = fetchProductsUseCase
+        self.actions = actions
     }
+    
+    //MARK: - Functions
     
     func getProducts(with text: String) {
         Loader.show()
@@ -40,8 +52,12 @@ final class DefaultSearchProductsPresenter: SearchProductsPresenter {
             case .failure(let error):
                 self.viewController?.showError(message: error.localizedDescription)
             }
-     
         }
+    }
+    
+    func didSelectItem(at index: Int) {
+        let selectedProduct = products[index]
+        actions?.showProductDetails(ProductDetailsDataModel(productID: selectedProduct.productID ?? ""))
     }
     
     // MARK: - Setter

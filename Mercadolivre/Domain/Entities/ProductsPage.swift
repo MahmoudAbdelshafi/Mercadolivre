@@ -11,4 +11,5 @@ struct Product: Equatable {
     let title: String?
     let price: String?
     let thumbnail: String?
+    let productID: String?
 }

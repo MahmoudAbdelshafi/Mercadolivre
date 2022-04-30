@@ -23,7 +23,7 @@ extension DefaultProductsRepository: ProductsRepository {
         baseAPI.fetchData(target: .searchProducts(text: text), responseClass: ProductsResponseDTO.self) { result in
             switch result {
             case .success(let products):
-                completion(.success(products?.toProductsPageDomain() ?? []))
+                completion(.success(products?.toProductsDomain() ?? []))
             case .failure(let error):
                 completion(.failure(error))
             }

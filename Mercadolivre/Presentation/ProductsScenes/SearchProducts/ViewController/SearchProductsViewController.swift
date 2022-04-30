@@ -100,6 +100,10 @@ extension SearchProductsViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectItem(at: indexPath.row)
+    }
+    
 }
 
 

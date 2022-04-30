@@ -8,8 +8,8 @@
 import UIKit
 
 protocol ProductsScenesRouterDependencies {
-   func makeSearchProductsViewController() -> SearchProductsViewController
-//    func makeProductDetailsScreenViewController(dataModel: ProductDetailsDataViewModel) -> ProductDetailsViewController
+    func makeSearchProductsViewController(actions: SearchProductsPresenterActions) -> SearchProductsViewController
+    func makeProductDetailsScreenViewController(dataModel: ProductDetailsDataModel) -> ProductDetailsViewController
 }
 
 final class ProductsScenesRouter {
@@ -26,17 +26,15 @@ final class ProductsScenesRouter {
     }
     
     func start() {
-      //  let action = ProductsViewModelActions(showProductDetails: navigateToProductDetailsScreen(_:))
-        let vc = dependencies.makeSearchProductsViewController()
+        let action = SearchProductsPresenterActions(showProductDetails: navigateToProductDetailsScreen(_:))
+        let vc = dependencies.makeSearchProductsViewController(actions: action)
         
         navigationController?.pushViewController(vc, animated: false)
         productsVC = vc
     }
     
-//    private func navigateToProductDetailsScreen(_ dataModel: ProductDetailsDataViewModel) {
-//        let vc = dependencies.makeProductDetailsScreenViewController(dataModel: dataModel)
-//        vc.transitioningDelegate = productsVC
-//        vc.modalPresentationStyle = .fullScreen
-//        productsVC?.present(vc, animated: true)
-//    }
+    private func navigateToProductDetailsScreen(_ dataModel: ProductDetailsDataModel) {
+        let vc = dependencies.makeProductDetailsScreenViewController(dataModel: dataModel)
+        productsVC?.navigationController?.pushViewController(vc, animated: true)
+    }
 }
