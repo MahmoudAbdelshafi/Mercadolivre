@@ -23,7 +23,11 @@ final class ProductsScenesDiContainer {
     }
     
     func makeDefaultFetchProductDetailsUseCase() -> FetchProductDetailsUseCase {
-        DefaultFetchProductDetailsUseCase(productDetailsRepository:DefaultProductDetailsRepository(baseAPI: BaseAPI()))
+        DefaultFetchProductDetailsUseCase(productDetailsRepository: DefaultProductDetailsRepository(baseAPI: BaseAPI()))
+    }
+    
+    func makeDefaultFetchRecentlyViewedProducts() -> FetchRecentlyViewedProductsUseCase {
+        DefaultFetchRecentlyViewedProductsUseCase(productDetailsRepository: DefaultProductDetailsRepository(baseAPI: BaseAPI()))
     }
     
     //MARK: - Presenters
@@ -33,7 +37,8 @@ final class ProductsScenesDiContainer {
     }
     
     func makeProductDetailsPresenter() -> DefaultProductDetailsPresenter {
-        DefaultProductDetailsPresenter(fetchProductDetailsUseCase: makeDefaultFetchProductDetailsUseCase())
+        DefaultProductDetailsPresenter(fetchProductDetailsUseCase: makeDefaultFetchProductDetailsUseCase(),
+                                       fetchRecentlyViewedProductsUseCase: makeDefaultFetchRecentlyViewedProducts())
     }
 }
 

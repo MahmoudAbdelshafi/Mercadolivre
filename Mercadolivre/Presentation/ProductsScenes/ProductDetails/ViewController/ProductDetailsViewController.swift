@@ -58,7 +58,7 @@ extension ProductDetailsViewController: ProductDetailsViewPresentationProtocol {
     }
     
     func reloadData() {
-        presenter.recentlyViewedProducts.count < 1 ? hideRecentlyViewedView() : showRecentlyViewedView()
+        presenter.recentlyViewedProducts?.count ?? 0 < 1 ? hideRecentlyViewedView() : showRecentlyViewedView()
         collectionView.reloadData()
     }
     
@@ -98,7 +98,7 @@ extension ProductDetailsViewController {
 
 extension ProductDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.recentlyViewedProducts.count
+        return presenter.recentlyViewedProducts?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,7 +108,9 @@ extension ProductDetailsViewController: UICollectionViewDelegate, UICollectionVi
                 as? RecentlyViewedCollectionViewCell else {
                     fatalError("Couldn't dequeue \(RecentlyViewedCollectionViewCell.self)")
                 }
-        cell.configure(product: presenter.recentlyViewedProducts[indexPath.row])
+        if let recentProduct = presenter.recentlyViewedProducts?[indexPath.row] {
+            cell.configure(product: recentProduct)
+        }
         return cell
     }
     

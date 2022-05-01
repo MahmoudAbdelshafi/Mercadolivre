@@ -8,9 +8,6 @@
 import Foundation
 import Alamofire
 
-import Foundation
-import Alamofire
-
 class BaseAPI<T: TargetType> {
     
     func fetchData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Result<M?, ErrorHandler>) -> Void) {
@@ -32,7 +29,6 @@ class BaseAPI<T: TargetType> {
                 return
             }
             if statusCode == 200 {
-    
                 guard let data = response.data else {
                     completion(.failure(.parsing))
                     return

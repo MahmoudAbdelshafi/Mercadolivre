@@ -11,7 +11,7 @@ protocol ProductDetailsPresenter {
     func viewDidLoad()
     
     var product: Product? { get }
-    var recentlyViewedProducts: [Product] { get }
+    var recentlyViewedProducts: [Product]? { get }
 }
 
 final class DefaultProductDetailsPresenter: ProductDetailsPresenter {
@@ -19,30 +19,37 @@ final class DefaultProductDetailsPresenter: ProductDetailsPresenter {
     //MARK: - Properties
     
     var product: Product?
-    var recentlyViewedProducts: [Product] = []
+    var recentlyViewedProducts: [Product]?
     private var passedProductDetailsDataModel: ProductDetailsDataModel?
     
     private let fetchProductDetailsUseCase: FetchProductDetailsUseCase
-    private weak var viewController: ProductDetailsViewPresentationProtocol?
+    private let fetchRecentlyViewedProductsUseCase: FetchRecentlyViewedProductsUseCase
+    private(set) weak var viewController: ProductDetailsViewPresentationProtocol?
     
     //MARK: - Init
     
-    init(fetchProductDetailsUseCase: FetchProductDetailsUseCase) {
+    init(fetchProductDetailsUseCase: FetchProductDetailsUseCase,
+         fetchRecentlyViewedProductsUseCase: FetchRecentlyViewedProductsUseCase) {
         self.fetchProductDetailsUseCase = fetchProductDetailsUseCase
+        self.fetchRecentlyViewedProductsUseCase = fetchRecentlyViewedProductsUseCase
     }
     
     //MARK: - Functions
     
     func viewDidLoad() {
+        getRecentlyViewedProducts()
         guard let id = self.passedProductDetailsDataModel?.productID else { return }
         getProductDetails(with: id)
-        getRecentlyViewedProducts()
     }
     
     // MARK: - Setters
     
     func setViewController(viewController: ProductDetailsViewPresentationProtocol) {
-        self.viewController = viewController
+        if self.viewController == nil {
+            self.viewController = viewController
+        } else {
+           fatalError("Can't init presenter's viewController value twice")
+        }
     }
     
     func setPassedProductDataModel(dataModel: ProductDetailsDataModel) {
@@ -56,7 +63,7 @@ extension DefaultProductDetailsPresenter {
     
     private func getProductDetails(with id: String) {
         Loader.show()
-        fetchProductDetailsUseCase.getProductDetails(id: id) { result in
+        fetchProductDetailsUseCase.execute(id: id) { result in
             Loader.hide()
             switch result {
             case .success(let product):
@@ -70,7 +77,7 @@ extension DefaultProductDetailsPresenter {
     }
     
     private func getRecentlyViewedProducts() {
-        fetchProductDetailsUseCase.getRecentlyViewedProducts { result in
+        fetchRecentlyViewedProductsUseCase.execute { result in
             switch result {
             case .success(let recentProduct):
                 self.recentlyViewedProducts = recentProduct
@@ -80,4 +87,5 @@ extension DefaultProductDetailsPresenter {
             }
         }
     }
+    
 }
