@@ -66,7 +66,9 @@ extension SearchProductsViewController {
     }
     
     private func showNoResultPopup() {
-        if let popup = Bundle.main.loadNibNamed(String(describing: NoResultView.self), owner: self, options: nil)?.first as? NoResultView {
+        if let popup = Bundle.main.loadNibNamed(String(describing: NoResultView.self),
+                                                owner: self,
+                                                options: nil)?.first as? NoResultView {
             noResultPopup = popup
             noResultPopup?.initPopup(view: self.view)
         }
