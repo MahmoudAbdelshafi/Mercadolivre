@@ -24,7 +24,7 @@ final class DefaultSearchProductsPresenter: SearchProductsPresenter {
     //MARK: - Properties
     
     private let fetchProductsUseCase: FetchProductsUseCase
-    private weak var viewController: SearchProductsViewPresentationProtocol?
+    private(set) weak var viewController: SearchProductsViewPresentationProtocol?
     private let actions: SearchProductsPresenterActions?
     
     var products: [Product] = []
@@ -63,6 +63,10 @@ final class DefaultSearchProductsPresenter: SearchProductsPresenter {
     // MARK: - Setter
     
     func setViewController(viewController: SearchProductsViewPresentationProtocol) {
-        self.viewController = viewController
+        if self.viewController == nil {
+            self.viewController = viewController
+        } else {
+           fatalError("Can't init presenter's viewController value twice")
+        }
     }
 }

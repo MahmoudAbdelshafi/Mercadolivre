@@ -1,5 +1,5 @@
 //
-//  SearchProductsPresenter.swift
+//  SearchProductsPresenterTests.swift
 //  MercadolivreTests
 //
 //  Created by Mahmoud Abdelshafi on 28/04/2022.
@@ -8,9 +8,9 @@
 import XCTest
 @testable import Mercadolivre
 
-class SearchProductsPresenter: XCTestCase {
+class SearchProductsPresenterTests: XCTestCase {
     
-    enum FetchProductsUseTestingError:Error {
+    enum FetchProductsUseCaseTestingError:Error {
         case faildFetchingProducts
     }
     
@@ -19,13 +19,13 @@ class SearchProductsPresenter: XCTestCase {
     class FetchProductsUseCaseMock: FetchProductsUseCase {
         
         var expectation: XCTestExpectation?
-        var error: FetchProductsUseTestingError?
-        let product = Product(title: "notebook", price: "20", thumbnail: "http")
+        var error: FetchProductsUseCaseTestingError?
+        let product = Product(title: "notebook", price: "20", thumbnail: "http", productID: "1")
         var products = [Product]()
         
         func execute(text: String, completion: @escaping (Result<[Product], Error>) -> Void) {
             if let _ = error {
-                completion(.failure(FetchProductsUseTestingError.faildFetchingProducts))
+                completion(.failure(FetchProductsUseCaseTestingError.faildFetchingProducts))
             } else {
                 products = [product, product, product]
                 completion(.success(products))
@@ -34,7 +34,21 @@ class SearchProductsPresenter: XCTestCase {
         }
     }
     
-    func testSearchForProducts_Successfully() {
+    class SearchProductsViewControllerMock: SearchProductsViewPresentationProtocol {
+        
+        var expectation: XCTestExpectation?
+        var presenter: ProductDetailsPresenter?
+        
+        func reloadData() {
+            expectation?.fulfill()
+        }
+        
+        func showError(message: String) { }
+    }
+    
+    //MARK: - Tests
+    
+    func testSearchForProducts_andGetProducts_Successfully() {
         //given
         let fetchProductsUseCaseMock = FetchProductsUseCaseMock()
         fetchProductsUseCaseMock.expectation = self.expectation(description: "Search for data should success")
@@ -49,7 +63,7 @@ class SearchProductsPresenter: XCTestCase {
         XCTAssertEqual(presenter.products.first, fetchProductsUseCaseMock.products.first)
     }
     
-    func testSearchForProducts_fails() {
+    func testSearchForProducts_getProducts_fails() {
         //given
         let fetchProductsUseCaseMock = FetchProductsUseCaseMock()
         fetchProductsUseCaseMock.expectation = self.expectation(description: "Search for products should fail")
@@ -64,4 +78,5 @@ class SearchProductsPresenter: XCTestCase {
         XCTAssertNotNil(fetchProductsUseCaseMock.error)
         XCTAssertNil(presenter.products.first)
     }
+    
 }
