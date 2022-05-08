@@ -25,6 +25,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+        with:
+    path: Pods
+    key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+    restore-keys: |
+            ${{ runner.os }}-pods-
+
       # Runs a single command using the runners shell
       - name: Build
         run: swift build -v
