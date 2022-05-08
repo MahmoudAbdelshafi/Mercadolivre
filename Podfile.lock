@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (5.5.0)
+  - Kingfisher (7.1.2)
+  - Realm (10.20.1):
+    - Realm/Headers (= 10.20.1)
+  - Realm/Headers (10.20.1)
+  - RealmSwift (10.20.1):
+    - Realm (= 10.20.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0)
+  - Kingfisher
+  - RealmSwift (~> 10)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  Realm: fac5ecd031fcb81171627b74944c885662d4b266
+  RealmSwift: 9b02d25acb46a14756bde9893abb99e2e3675923
+
+PODFILE CHECKSUM: 677ce9351b577820967ea810ca4d2dcb2503e9fa
+
+COCOAPODS: 1.11.2
